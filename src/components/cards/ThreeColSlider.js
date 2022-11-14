@@ -79,6 +79,19 @@ export default () => {
     setShowDonateModal(false);
   };
 
+  const donateNowCampaignRefresh = (responseData) => {
+    console.log("It was called", responseData);
+    const newCampaigns = campaigns.map((obj) => {
+      if (obj.campaignId === responseData.campaignId) {
+        return { ...responseData };
+      }
+
+      return obj;
+    });
+
+    setCampaigns(newCampaigns);
+  };
+
   const showPaymentCardHandler = (campaignId, campaign) => {
     setShowDonateModal(true);
     setShowPaymentCard(true);
@@ -100,6 +113,7 @@ export default () => {
           campaignId={campaignId}
           campaign={campaignN}
           showPaymentCard={showPaymentCard}
+          donateNowCampaignRefresh={donateNowCampaignRefresh}
         />
       ) : null}
       <Content>

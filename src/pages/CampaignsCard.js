@@ -13,7 +13,12 @@ const CardImageNew = styled.div((props) => [
 
 const SubmitButton = tw.button`sm:w-32 py-3 bg-gray-100 text-blue-500 rounded-full font-bold tracking-wide shadow-lg uppercase text-sm transition duration-300 transform focus:outline-none focus:shadow-outline hover:bg-gray-300 hover:text-blue-700 hocus:-translate-y-px hocus:shadow-xl`;
 
-const CampaignsCard = ({ campaign, inReview, goalReached }) => {
+const CampaignsCard = ({
+  campaign,
+  inReview,
+  goalReached,
+  donateNowCampaignRefresh,
+}) => {
   const calculateDaysLeft = (presentDate, goalDate) => {
     return presentDate.diff(goalDate, "days");
   };
@@ -60,6 +65,7 @@ const CampaignsCard = ({ campaign, inReview, goalReached }) => {
           goalReached={goalReached}
           showPaymentCard={showPaymentCard}
           showPaymentCardHandler={showPaymentCardHandler}
+          donateNowCampaignRefresh={donateNowCampaignRefresh}
         />
       ) : null}
       <div className="w-11/12 bg-blue-500 dark:bg-gray-800 mx-auto  rounded-2xl shadow-lg flex flex-wrap sm:flex-row gap-0 select-none mb-28">

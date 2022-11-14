@@ -118,6 +118,15 @@ const AdminPage = () => {
         // const name = movie.trackName;
         // const imageURL = movie.artworkUrl100;
 
+        const newCampaigns = campaigns.map((obj) => {
+          if (obj.campaignId === json.campaignId) {
+            return { ...obj, status: json.status };
+          }
+
+          return obj;
+        });
+
+        setCampaigns(newCampaigns);
         swal("Campaign was rejected", {
           icon: "success",
         });

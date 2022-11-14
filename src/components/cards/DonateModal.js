@@ -56,6 +56,7 @@ const DonateModal = ({
   inReview,
   goalReached,
   showPaymentCard,
+  donateNowCampaignRefresh,
 }) => {
   console.log(campaignId);
 
@@ -83,13 +84,14 @@ const DonateModal = ({
     axios
       .put(`http://127.0.0.1:5000/${campaignId}`, donations)
       .then((response) => {
-        if (response.status === 200) {
-          closeModal();
+        if (response.status == "200") {
           swal({
             title: "Thank You!",
             text: "Your contribution was received!",
             icon: "success",
           });
+          closeModal();
+          donateNowCampaignRefresh(response.data);
         } else {
           swal({
             title: "Oops!",

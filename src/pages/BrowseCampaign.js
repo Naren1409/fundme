@@ -33,6 +33,19 @@ const BrowseCampaign = () => {
     setShowDonateModal(false);
   };
 
+  const donateNowCampaignRefresh = (responseData) => {
+    console.log("It was called", responseData);
+    const newCampaigns = campaigns.map((obj) => {
+      if (obj.campaignId === responseData.campaignId) {
+        return { ...responseData };
+      }
+
+      return obj;
+    });
+
+    setCampaigns(newCampaigns);
+  };
+
   const activeCampaigns = (
     <Container>
       <Content>
@@ -46,6 +59,7 @@ const BrowseCampaign = () => {
               campaign={campaign}
               inReview={false}
               goalReached={false}
+              donateNowCampaignRefresh={donateNowCampaignRefresh}
             />
           ) : null
         )}
