@@ -69,6 +69,7 @@ const DonateModal = ({
   inReview,
   goalReached,
   showPaymentCard,
+  showPaymentCardHandler,
   donateNowCampaignRefresh,
 }) => {
   console.log(campaignId);
@@ -133,6 +134,7 @@ const DonateModal = ({
               closeModal={closeModal}
               inReview={inReview}
               goalReached={goalReached}
+              showPaymentCardHandler={showPaymentCardHandler}
             />
             {showPaymentCard ? (
               <FormContainer>

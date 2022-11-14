@@ -12,10 +12,10 @@ const CardImage = styled.div((props) => [
 const DonateModalInfo = ({
   campaign,
   showPaymentCard,
-  showPaymentCardHandler,
   closeModal,
   inReview,
   goalReached,
+  showPaymentCardHandler,
 }) => {
   const calculateDaysLeft = (presentDate, goalDate) => {
     return presentDate.diff(goalDate, "days");
@@ -183,7 +183,17 @@ const DonateModalInfo = ({
                     </p>
                     {inReview || goalReached ? null : (
                       <p className="text-blue-200 text-sm">
-                        <SubmitButton>Donate Now</SubmitButton>
+                        <SubmitButton
+                          onClick={() => {
+                            showPaymentCardHandler(
+                              campaign.campaignId,
+                              campaign
+                            );
+                            setPaymentCardVisible(true);
+                          }}
+                        >
+                          Donate Now
+                        </SubmitButton>
                       </p>
                     )}
                   </div>
