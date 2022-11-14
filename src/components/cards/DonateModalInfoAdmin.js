@@ -48,10 +48,21 @@ const DonateModalInfoAdmin = ({
   const infoCardContainerClassWithPaymentCard =
     "shadow-lg bg-blue-500 w-full h-full md:h-full md:w-full p-6 bg-white dark:bg-gray-800 relative overflow-hidden";
   const infoCardContainerClassWithoutPaymentCard =
-    "shadow-lg bg-blue-500 w-full h-96 md:h-96 md:w-full p-6 bg-white dark:bg-gray-800 relative overflow-hidden";
+    "shadow-lg bg-blue-500 w-full md:w-full p-6 bg-white dark:bg-gray-800 relative overflow-hidden";
   const infoCardContainerClass = paymentCardVisible
     ? infoCardContainerClassWithPaymentCard
     : infoCardContainerClassWithoutPaymentCard;
+
+  const statusCardContainerClassWithPaymentCard =
+    "px-2 py-1 w-fit m-3 mr-4 mt-4 items-center text-xs rounded-md font-semibold uppercase";
+  const statusCardContainerClassWithoutPaymentCard =
+    "px-2 py-1 w-fit  m-auto  my-4 items-center text-xs rounded-md font-semibold uppercase";
+
+  const statusContainerClass = paymentCardVisible
+    ? statusCardContainerClassWithPaymentCard
+    : statusCardContainerClassWithoutPaymentCard;
+
+  const dateFormatter = paymentCardVisible ? "ll" : "LL";
 
   const CloseButton = tw.button`w-full sm:w-32 bg-red-500 text-white mb-1 rounded-full font-bold tracking-wide shadow-lg uppercase text-sm transition duration-300 transform focus:outline-none focus:shadow-outline hover:bg-gray-300 hover:text-blue-700 hocus:-translate-y-px hocus:shadow-xl`;
   const SubmitButton = tw.button`w-full sm:w-32 bg-gray-100 text-blue-500 mb-1 rounded-full font-bold tracking-wide shadow-lg uppercase text-sm transition duration-300 transform focus:outline-none focus:shadow-outline hover:bg-gray-300 hover:text-blue-700 hocus:-translate-y-px hocus:shadow-xl`;
@@ -218,17 +229,29 @@ const DonateModalInfoAdmin = ({
               )}
             </div>
 
-            <div className="flex flex-row t-50">
-              <span className="px-2 py-1 w-fit m-3 mr-4 mt-4 items-center text-xs rounded-md font-semibold text-green-700 bg-green-50 uppercase">
+            <div className="flex flex-row t-50 mt-6">
+              <span
+                className={`${statusContainerClass} text-green-700 bg-green-50`}
+              >
                 {`STATUS : ${campaign.status}`}
               </span>
-              <span className="px-2 py-1 w-fit m-3 mt-4 items-center text-xs rounded-md font-semibold text-yellow-500 bg-yellow-100">
-                {`START DATE : ${moment(campaign.createdAt).format("ll")}`}
+              <span
+                className={`${statusContainerClass} text-yellow-500 bg-yellow-100`}
+              >
+                {`START DATE : ${moment(campaign.createdAt).format(
+                  dateFormatter
+                )}`}
               </span>
-              <span className="px-2 py-1 w-fit m-3 mt-4 items-center text-xs rounded-md font-semibold text-yellow-500 bg-yellow-100">
-                {`END DATE : ${moment(campaign.campaignLastDate).format("ll")}`}
+              <span
+                className={`${statusContainerClass} text-yellow-500 bg-yellow-100`}
+              >
+                {`END DATE : ${moment(campaign.campaignLastDate).format(
+                  dateFormatter
+                )}`}
               </span>
-              <span className="px-2 py-1 w-fit m-3 mt-4 items-center font-semibold text-xs rounded-md text-green-600 border border-green-600 bg-white">
+              <span
+                className={`${statusContainerClass} text-green-600 border border-green-600 bg-white`}
+              >
                 MEDIUM PRIORITY
               </span>
             </div>
@@ -236,7 +259,7 @@ const DonateModalInfoAdmin = ({
             <div className="h-8 ml-4 mb-0 rounded text-white text-lg">
               {campaign.campaignName}
             </div>
-            <div className="h-4/6 max-h-60 ml-4 rounded text-white text-lg overflow-y-scroll">
+            <div className="max-h-full ml-4 rounded text-white text-lg">
               {campaign.campaignInfo}
             </div>
           </div>
