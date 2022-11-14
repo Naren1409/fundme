@@ -68,7 +68,7 @@ const Login = ({
   let navigate = useNavigate();
 
   const signInFormHandler = ()=>{
-    navigate("/");
+    navigate("/home");
   }
 
   return (

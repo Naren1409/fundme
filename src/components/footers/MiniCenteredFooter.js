@@ -39,10 +39,10 @@ export default () => {
             <LogoText>Fund</LogoText>
           </LogoContainer>
           <LinksContainer>
-            <Link href="/">Home</Link>
-            <Link href="/components/innerPages/AboutUsPage">About</Link>
-            <Link href="/components/landingPages/EventLandingPage">Blog</Link>
-            <Link href="/components/innerPages/BrowseCampaignPage">Active Campaigns</Link>
+            <Link href="/home">Home</Link>
+            <Link href="/about">About</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/browse-campaign">Active Campaigns</Link>
           </LinksContainer>
           <CopyrightText>
             &copy; Copyright 2022, Upland Inc. All Rights Reserved.

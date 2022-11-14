@@ -72,10 +72,10 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
    */
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/components/innerPages/AboutUsPage">About</NavLink>
-      <NavLink href="/components/landingPages/EventLandingPage">Blog</NavLink>
-      <NavLink href="/components/innerPages/CampaignPage">Create Campaign</NavLink>
-      <NavLink href="/components/innerPages/BrowseCampaignPage">Browse Campaign</NavLink>
+      <NavLink href="/about">About</NavLink>
+      <NavLink href="/blog">Blog</NavLink>
+      <NavLink href="/create-campaign">Create Campaign</NavLink>
+      <NavLink href="/browse-campaign">Browse Campaign</NavLink>
       {/* <NavLink href="/#" tw="lg:ml-12!">
         Login
       </NavLink>
@@ -87,7 +87,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];
 
   const defaultLogoLink = (
-    <LogoLink href="/">
+    <LogoLink href="/home">
       <img src={logo} alt="logo" />
       Fund Smiles
     </LogoLink>
