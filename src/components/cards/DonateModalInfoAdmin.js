@@ -230,11 +230,39 @@ const DonateModalInfoAdmin = ({
             </div>
 
             <div className="flex flex-row t-50 mt-6">
-              <span
-                className={`${statusContainerClass} text-green-700 bg-green-50`}
-              >
-                {`STATUS : ${campaign.status}`}
-              </span>
+              {/*<span*/}
+              {/*  className={`${statusContainerClass} text-green-700 bg-green-50`}*/}
+              {/*>*/}
+              {/*  {`STATUS : ${campaign.status}`}*/}
+              {/*</span>*/}
+              {campaign.status === "goalReached" ? (
+                <span
+                  className={`${statusContainerClass} text-blue-500 border border-blue-500 bg-blue-100 uppercase`}
+                >
+                  {`STATUS : GOAL REACHED`}
+                </span>
+              ) : null}
+              {campaign.status === "inreview" ? (
+                <span
+                  className={`${statusContainerClass} text-yellow-500 border border-yellow-500 bg-yellow-100 uppercase`}
+                >
+                  {`STATUS : IN REVIEW`}
+                </span>
+              ) : null}
+              {campaign.status === "rejected" ? (
+                <span
+                  className={`${statusContainerClass} text-red-500 border border-red-500 bg-red-100 uppercase`}
+                >
+                  {`STATUS : REJECTED`}
+                </span>
+              ) : null}
+              {campaign.status === "active" ? (
+                <span
+                  className={`${statusContainerClass} text-green-500 border border-green-500 bg-green-100 uppercase`}
+                >
+                  {`STATUS : ACTIVE`}
+                </span>
+              ) : null}
               <span
                 className={`${statusContainerClass} text-yellow-500 bg-yellow-100`}
               >
@@ -249,11 +277,28 @@ const DonateModalInfoAdmin = ({
                   dateFormatter
                 )}`}
               </span>
-              <span
-                className={`${statusContainerClass} text-green-600 border border-green-600 bg-white`}
-              >
-                MEDIUM PRIORITY
-              </span>
+              {campaign.priority === "low" ||
+              campaign.priority === undefined ? (
+                <span
+                  className={`${statusContainerClass} text-yellow-500 border border-yellow-500 bg-yellow-100 uppercase`}
+                >
+                  {`priority : ${campaign.priority}`}
+                </span>
+              ) : null}
+              {campaign.priority === "medium" ? (
+                <span
+                  className={`${statusContainerClass} text-green-500 border border-green-500 bg-green-100 uppercase`}
+                >
+                  {`priority : ${campaign.priority}`}
+                </span>
+              ) : null}
+              {campaign.priority === "high" ? (
+                <span
+                  className={`${statusContainerClass} text-red-500 border border-red-500 bg-red-100 uppercase`}
+                >
+                  {`priority : ${campaign.priority}`}
+                </span>
+              ) : null}
             </div>
 
             <div className="h-8 ml-4 mb-0 rounded text-white text-lg">

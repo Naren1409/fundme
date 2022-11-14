@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
@@ -57,7 +57,10 @@ const SimpleContactUs = () => {
     status: "inreview",
     updatedBy: "",
     userEmail: "",
+    priority: "low",
   });
+
+  const [priorityState, setPriorityState] = useState("lowpriority");
 
   const handleFormChangeValue = (event, inputField) => {
     const tempCampaign = campaign;
@@ -138,19 +141,19 @@ const SimpleContactUs = () => {
                       placeholder="E.g. Eren Yeager"
                     />
                   </InputContainer>
-                  <InputContainer>
-                    <Label htmlFor="name-input">Campaign Title *</Label>
-                    <Input
-                      id="name-input"
-                      type="text"
-                      name="name"
-                      value={campaign.campaignName}
-                      onChange={(event) =>
-                        handleFormChangeValue(event, "campaignName")
-                      }
-                      placeholder="E.g Fund for Cause"
-                    />
-                  </InputContainer>
+                  {/*<InputContainer>*/}
+                  {/*  <Label htmlFor="name-input">Campaign Title *</Label>*/}
+                  {/*  <Input*/}
+                  {/*    id="name-input"*/}
+                  {/*    type="text"*/}
+                  {/*    name="name"*/}
+                  {/*    value={campaign.campaignName}*/}
+                  {/*    onChange={(event) =>*/}
+                  {/*      handleFormChangeValue(event, "campaignName")*/}
+                  {/*    }*/}
+                  {/*    placeholder="E.g Fund for Cause"*/}
+                  {/*  />*/}
+                  {/*</InputContainer>*/}
                   <InputContainer>
                     <Label htmlFor="email-input">Your Email Address *</Label>
                     <Input
@@ -188,6 +191,19 @@ const SimpleContactUs = () => {
                   </InputContainer>
                 </Column>
                 <Column>
+                  <InputContainer>
+                    <Label htmlFor="name-input">Campaign Title *</Label>
+                    <Input
+                      id="name-input"
+                      type="text"
+                      name="name"
+                      value={campaign.campaignName}
+                      onChange={(event) =>
+                        handleFormChangeValue(event, "campaignName")
+                      }
+                      placeholder="E.g Fund for Cause"
+                    />
+                  </InputContainer>
                   <InputContainer tw="flex-1">
                     <Label htmlFor="name-input">Campaign Information *</Label>
                     <TextArea
@@ -212,6 +228,21 @@ const SimpleContactUs = () => {
                       }
                       placeholder="E.g. 100"
                     />
+                  </InputContainer>
+                  <InputContainer>
+                    <Label htmlFor="email-input">Select Priority </Label>
+                    <select
+                      id="states"
+                      onChange={(event) =>
+                        handleFormChangeValue(event, "priority")
+                      }
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-fit p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                      {/*<option selected="">Choose a State</option>*/}
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high">High</option>
+                    </select>
                   </InputContainer>
                 </Column>
               </TwoColumn>

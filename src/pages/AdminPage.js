@@ -49,6 +49,9 @@ const AdminPage = () => {
     setCampaigns(newCampaigns);
   };
 
+  const statusContainerClass =
+    "px-2 py-1 w-fit  m-auto  my-4 items-center text-xs rounded-md font-semibold uppercase";
+
   const approveHandler = (campaignId) => {
     swal({
       title: "Are you sure, want to Approve this campaign?",
@@ -146,7 +149,7 @@ const AdminPage = () => {
   };
 
   const dropDownSelection = (
-    <div className="flex flex-row-reverse">
+    <div className="flex flex-row-reverse mt-14">
       <div className="flex flex-col">
         <label
           htmlFor="states"
@@ -260,7 +263,34 @@ const AdminPage = () => {
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                       <p className="text-gray-900 whitespace-no-wrap uppercase">
-                        {campaign.status}
+                        {campaign.status === "goalReached" ? (
+                          <span
+                            className={`${statusContainerClass} text-blue-500 border border-blue-500 bg-blue-100 uppercase`}
+                          >
+                            {`GOAL REACHED`}
+                          </span>
+                        ) : null}
+                        {campaign.status === "inreview" ? (
+                          <span
+                            className={`${statusContainerClass} text-yellow-500 border border-yellow-500 bg-yellow-100 uppercase`}
+                          >
+                            {`IN REVIEW`}
+                          </span>
+                        ) : null}
+                        {campaign.status === "rejected" ? (
+                          <span
+                            className={`${statusContainerClass} text-red-500 border border-red-500 bg-red-100 uppercase`}
+                          >
+                            {`REJECTED`}
+                          </span>
+                        ) : null}
+                        {campaign.status === "active" ? (
+                          <span
+                            className={`${statusContainerClass} text-green-500 border border-green-500 bg-green-100 uppercase`}
+                          >
+                            {`ACTIVE`}
+                          </span>
+                        ) : null}
                       </p>
                     </td>
                     {/*{campaign.status === "rejected" ? (*/}

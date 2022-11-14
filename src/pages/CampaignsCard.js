@@ -187,9 +187,21 @@ const CampaignsCard = ({
               <span className="px-2 py-1 w-fit m-3 mt-4 items-center text-xs rounded-md font-semibold text-yellow-500 bg-yellow-100">
                 {`END DATE : ${moment(campaign.campaignLastDate).format("LL")}`}
               </span>
-              <span className="px-2 py-1 w-fit m-3 mt-4 items-center font-semibold text-xs rounded-md text-green-600 border border-green-600 bg-white">
-                MEDIUM PRIORITY
-              </span>
+              {campaign.priority === "low" ? (
+                <span className="px-2 py-1 w-fit m-3 mt-4 items-center font-semibold text-xs rounded-md text-yellow-500 border border-yellow-500 bg-yellow-100 uppercase">
+                  {`priority : ${campaign.priority}`}
+                </span>
+              ) : null}
+              {campaign.priority === "medium" ? (
+                <span className="px-2 py-1 w-fit m-3 mt-4 items-center font-semibold text-xs rounded-md text-green-500 border border-green-500 bg-green-100 uppercase">
+                  {`priority : ${campaign.priority}`}
+                </span>
+              ) : null}
+              {campaign.priority === "high" ? (
+                <span className="px-2 py-1 w-fit m-3 mt-4 items-center font-semibold text-xs rounded-md text-red-500 border border-red-500 bg-red-100 uppercase">
+                  {`priority : ${campaign.priority}`}
+                </span>
+              ) : null}
             </div>
           </div>
           <div className="mt-20 md:mt-6 mb-8 flex flex-row-reverse gap-3">

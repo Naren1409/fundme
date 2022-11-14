@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import charity from "../../images/charity.jpg";
-import Header, { LogoLink, NavLinks, NavLink as NavLinkBase } from "../headers/light.js";
+import Header, {
+  LogoLink,
+  NavLinks,
+  NavLink as NavLinkBase,
+} from "../headers/light.js";
 
 const StyledHeader = styled(Header)`
   ${tw`justify-between`}
@@ -41,29 +45,45 @@ const Actions = styled.div`
   }
 `;
 
-export default ({
-  navLinks = [
+const statusContainerClass =
+  "px-2 py-1 w-fit  m-auto  my-4 items-center text-xs rounded-md font-semibold uppercase";
+
+export default () => {
+  let isAdmin = localStorage.getItem("isAdmin");
+
+  console.log(isAdmin);
+  console.log(typeof isAdmin);
+
+  const navLinks = [
     <NavLinks key={1}>
       <NavLink href="about">About</NavLink>
       <NavLink href="blog">Blog</NavLink>
       <NavLink href="create-campaign">Create Campaign</NavLink>
       <NavLink href="browse-campaign">Browse Campaign</NavLink>
-    </NavLinks>
-  ],
-  heading = (
+      {isAdmin === "true" ? (
+        <span
+          className={`${statusContainerClass} text-blue-500 border border-blue-500 bg-blue-100 uppercase`}
+        >
+          <NavLink href="admin">Admin Dashboard</NavLink>
+        </span>
+      ) : null}
+    </NavLinks>,
+  ];
+
+  const heading = (
     <>
       Fundraising is a gentle art of
       <wbr />
       <br />
       <span tw="text-blue-500">teaching the joy of giving</span>
     </>
-  ),
-  description = "- Hank Rosso",
-  primaryActionUrl = "create-campaign",
-  primaryActionText = "Create Campaign",
-  secondaryActionUrl = "browse-campaign",
-  secondaryActionText = "Browse Campaign"
-}) => {
+  );
+  const description = "- Hank Rosso";
+  const primaryActionUrl = "create-campaign";
+  const primaryActionText = "Create Campaign";
+  const secondaryActionUrl = "browse-campaign";
+  const secondaryActionText = "Browse Campaign";
+
   return (
     <Container>
       <TwoColumn>
