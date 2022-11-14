@@ -85,9 +85,14 @@ const SimpleContactUs = () => {
   const handleSubmit = (event) => {
     var data;
     event.preventDefault();
-    axios.post("http://127.0.0.1:5000", campaign).then((response) => data);
-    swal("Done!", "Campaign Successfully Created!", "success");
-    navigate("/browse-campaign");
+    axios.post("http://127.0.0.1:5000", campaign).then((response) => {
+      if (response.status == "200") {
+        swal("Done!", "Campaign Successfully Created!", "success");
+        navigate("/browse-campaign");
+      } else {
+        swal("Oops!", "Some error occurred, Please try again!", "error");
+      }
+    });
   };
   const imgFilehandler = (e) => {
     if (e.target.files.length !== 0) {
@@ -126,11 +131,24 @@ const SimpleContactUs = () => {
                       id="name-input"
                       type="text"
                       name="name"
+                      value={campaign.createdBy}
+                      onChange={(event) =>
+                        handleFormChangeValue(event, "createdBy")
+                      }
+                      placeholder="E.g. Eren Yeager"
+                    />
+                  </InputContainer>
+                  <InputContainer>
+                    <Label htmlFor="name-input">Campaign Title *</Label>
+                    <Input
+                      id="name-input"
+                      type="text"
+                      name="name"
                       value={campaign.campaignName}
                       onChange={(event) =>
                         handleFormChangeValue(event, "campaignName")
                       }
-                      placeholder="E.g. Eren Yeager"
+                      placeholder="E.g Fund for Cause"
                     />
                   </InputContainer>
                   <InputContainer>
