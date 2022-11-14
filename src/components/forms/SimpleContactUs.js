@@ -87,7 +87,7 @@ const SimpleContactUs = () => {
     event.preventDefault();
     axios.post("http://127.0.0.1:5000", campaign).then((response) => data);
     swal("Done!", "Campaign Successfully Created!", "success");
-    navigate("/components/innerPages/BrowseCampaignPage");
+    navigate("/browse-campaign");
   };
   const imgFilehandler = (e) => {
     if (e.target.files.length !== 0) {

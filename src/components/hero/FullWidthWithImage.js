@@ -59,9 +59,9 @@ export default ({
     </>
   ),
   description = "- Hank Rosso",
-  primaryActionUrl = "components/innerPages/CampaignPage",
+  primaryActionUrl = "create-campaign",
   primaryActionText = "Create Campaign",
-  secondaryActionUrl = "components/innerPages/BrowseCampaignPage",
+  secondaryActionUrl = "browse-campaign",
   secondaryActionText = "Browse Campaign"
 }) => {
   return (
