@@ -8,7 +8,7 @@ import swal from "sweetalert";
 
 const CardImage = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
-  tw`bg-gray-200 h-2/6 p-3 h-56 sm:h-64 bg-cover bg-center`,
+  tw`bg-gray-200 h-2/6 p-3 h-96 sm:h-96 bg-cover bg-center`,
 ]);
 
 const DonateModalInfoAdmin = ({
@@ -19,6 +19,7 @@ const DonateModalInfoAdmin = ({
   showApprove,
   inReview,
   goalReached,
+  adminCampaignStateChangeHandler,
 }) => {
   const calculateDaysLeft = (presentDate, goalDate) => {
     return presentDate.diff(goalDate, "days");
@@ -71,6 +72,7 @@ const DonateModalInfoAdmin = ({
           })
           .then((response) => {
             if (response.status == 200) {
+              adminCampaignStateChangeHandler(response.data);
               swal("Yayy!, Campaign has been approved and now being active", {
                 icon: "success",
               });

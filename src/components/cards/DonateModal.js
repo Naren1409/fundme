@@ -6,7 +6,20 @@ import styled from "styled-components";
 import DonateModalInfo from "./DonateModalInfo";
 import swal from "sweetalert";
 
-const customStyles = {
+const customStylesWithPaymentCard = {
+  content: {
+    width: "87%",
+    height: "82%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%,-50%)",
+  },
+};
+
+const customStylesWithoutPaymentCard = {
   content: {
     width: "87%",
     height: "87%",
@@ -101,6 +114,9 @@ const DonateModal = ({
         }
       });
   };
+  const customStyles = showPaymentCard
+    ? customStylesWithPaymentCard
+    : customStylesWithoutPaymentCard;
 
   return (
     <Modal

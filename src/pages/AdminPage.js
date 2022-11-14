@@ -37,6 +37,18 @@ const AdminPage = () => {
     setCampaign(campaign);
   };
 
+  const adminCampaignStateChangeHandler = (responseData) => {
+    const newCampaigns = campaigns.map((obj) => {
+      if (obj.campaignId === responseData.campaignId) {
+        return { ...obj, status: responseData.status };
+      }
+
+      return obj;
+    });
+
+    setCampaigns(newCampaigns);
+  };
+
   const approveHandler = (campaignId) => {
     swal({
       title: "Are you sure, want to Approve this campaign?",
@@ -53,15 +65,7 @@ const AdminPage = () => {
           .then((response) => {
             if (response.status == 200) {
               // setCampaigns([...campaigns, response.data]);
-              const newCampaigns = campaigns.map((obj) => {
-                if (obj.campaignId === response.data.campaignId) {
-                  return { ...obj, status: response.data.status };
-                }
-
-                return obj;
-              });
-
-              setCampaigns(newCampaigns);
+              adminCampaignStateChangeHandler(response.data);
               swal("Yayy!, Campaign has been approved and now being active", {
                 icon: "success",
               });
@@ -340,6 +344,7 @@ const AdminPage = () => {
             closeModal={() => setActionState(false)}
             admin={true}
             showApprove={campaign.status === "inreview"}
+            adminCampaignStateChangeHandler={adminCampaignStateChangeHandler}
           />
         </Modal>
       ) : null}
