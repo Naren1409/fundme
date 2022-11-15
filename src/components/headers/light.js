@@ -91,7 +91,7 @@ export default ({
         <span
           className={`${statusContainerClass} text-blue-500 border border-blue-500 bg-blue-100 uppercase`}
         >
-          <NavLink href="admin">Admin Dashboard</NavLink>
+          <NavLink href="admin">Admin</NavLink>
         </span>
       ) : null}
     </NavLinks>,

@@ -1,9 +1,9 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import jigar from "images/Jigar.jpg";
-import shreenath from "images/shreenath.jpg";
-import naren from "images/naren.JPG";
+import jigar from "images/Jiagr.png";
+import shreenath from "images/shree.jpg";
+import naren from "images/nareng.jpg";
 import neel from "images/neel.jpg";
 import { css } from "styled-components/macro";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";

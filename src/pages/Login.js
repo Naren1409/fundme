@@ -105,7 +105,7 @@ const Login = ({
                     <span className="text">{submitButtonText}</span>
                   </SubmitButton>
                 </Form>
-                <p tw="mt-6 text-xs text-gray-600 text-center">
+                {/* <p tw="mt-6 text-xs text-gray-600 text-center">
                   <a
                     href={forgotPasswordUrl}
                     tw="ml-4 border-b border-gray-500 border-dotted"
@@ -121,7 +121,7 @@ const Login = ({
                   >
                     Sign Up
                   </a>
-                </p>
+                </p> */}
               </FormContainer>
             </MainContent>
           </MainContainer>
