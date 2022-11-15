@@ -60,6 +60,7 @@ const Login = ({
 
   const signInFormHandler = (event) => {
     event.preventDefault();
+    localStorage.clear();
     if (data.email === "demo@user.com" && data.password === "demo") {
       localStorage.setItem("name", "Demo User");
       localStorage.setItem("isAdmin", "false");
@@ -107,12 +108,12 @@ const Login = ({
                 <p tw="mt-6 text-xs text-gray-600 text-center">
                   <a
                     href={forgotPasswordUrl}
-                    tw="border-b border-gray-500 border-dotted"
+                    tw="ml-4 border-b border-gray-500 border-dotted"
                   >
                     Forgot Password ?
                   </a>
                 </p>
-                <p tw="mt-8 text-sm text-gray-600 text-center">
+                <p tw="pl-4 mt-8 text-sm text-gray-600 text-center">
                   Dont have an account?{" "}
                   <a
                     href={signupUrl}
